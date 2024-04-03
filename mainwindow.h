@@ -8,7 +8,10 @@
 #include <QLabel>
 #include <QSlider>
 #include <QPushButton>
+#include <QFile>
+#include <QTextStream>
 
+#include <QMessageBox>
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -22,10 +25,16 @@ public slots:
 
 private:
     void initWindow();
+    bool setConservationMode(int chargeMode);
 
 private:
     QWidget* mainWidget;
     QPushButton* btnApply;
     QSlider* sliderChargeMode;
+
+    QFile* fileConservation;
+    QMessageBox* messageBox;
+
+    QString pathConservation = "/sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode";
 };
 #endif // MAINWINDOW_H
