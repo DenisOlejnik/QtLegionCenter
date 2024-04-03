@@ -3,6 +3,27 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+    initWindow();
+    connect(btnApply, &QPushButton::clicked, this, &MainWindow::applyChanges);
+}
+
+
+MainWindow::~MainWindow()
+{
+    disconnect(btnApply, &QPushButton::clicked, this, &MainWindow::applyChanges);
+
+    delete sliderChargeMode;
+    delete btnApply;
+    delete mainWidget;
+}
+
+void MainWindow::applyChanges()
+{
+    qDebug() << "called";
+}
+
+void MainWindow::initWindow()
+{
     mainWidget = new QWidget(this);
     setCentralWidget(mainWidget);
 
@@ -33,9 +54,5 @@ MainWindow::MainWindow(QWidget *parent)
     btnApply = new QPushButton("Apply");
     vMainLayout->addWidget(btnApply);
     mainWidget->setLayout(vMainLayout);
-}
-
-MainWindow::~MainWindow()
-{
 }
 

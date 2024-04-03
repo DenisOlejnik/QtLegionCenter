@@ -17,10 +17,15 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public slots:
+    void applyChanges();
+
+private:
+    void initWindow();
+
 private:
     QWidget* mainWidget;
     QPushButton* btnApply;
     QSlider* sliderChargeMode;
-
 };
 #endif // MAINWINDOW_H
